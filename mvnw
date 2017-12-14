@@ -77,7 +77,7 @@ if [ -z "$M2_HOME" ] ; then
   PRG="$0"
 
   # need this for relative symlinks
-  while [ -h "$PRG" ] ; do
+  while [ -h "$PRG" ] ; dao
     ls=`ls -ld "$PRG"`
     link=`expr "$ls" : '.*-> \(.*\)$'`
     if expr "$link" : '/.*' > /dev/null; then
@@ -174,7 +174,7 @@ find_maven_basedir() {
 
   basedir="$1"
   wdir="$1"
-  while [ "$wdir" != '/' ] ; do
+  while [ "$wdir" != '/' ] ; dao
     if [ -d "$wdir"/.mvn ] ; then
       basedir=$wdir
       break

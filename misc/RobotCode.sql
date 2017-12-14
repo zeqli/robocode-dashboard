@@ -26,6 +26,11 @@ CREATE TABLE Access(
 	CONSTRAINT pk_access PRIMARY KEY(id)
 );
 
+INSERT INTO `Access` VALUES (NULL, 'group.read');
+INSERT INTO `Access` VALUES (NULL, 'group.write');
+INSERT INTO `Access` VALUES (NULL, 'role.write');
+INSERT INTO `Access` VALUES (NULL, 'role.read');
+
 -- Add Role_Access table, reference to Access table using Foreign Key access_id
 DROP TABLE IF EXISTS Role_Access;
 CREATE TABLE Role_Access(
@@ -84,11 +89,11 @@ CREATE TABLE Groups(
 -- Create table User_Group, referencing to Group
 DROP TABLE IF EXISTS User_Group; 
 CREATE TABLE User_Group(
-	Usr_id VARCHAR(80) NOT NULL, 
-	Group_id INT NOT NULL, 
+	usr_id VARCHAR(80) NOT NULL, 
+	group_id INT NOT NULL, 
 	create_time DATETIME DEFAULT CURRENT_TIMESTAMP, 
-	CONSTRAINT pk_User_Group PRIMARY KEY(Usr_id), 
-	CONSTRAINT fk_UG_G FOREIGN KEY (Group_id) REFERENCES Groups(id) ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT pk_User_Group PRIMARY KEY(usr_id), 
+	CONSTRAINT fk_UG_G FOREIGN KEY (group_id) REFERENCES Groups(id) ON DELETE CASCADE ON UPDATE CASCADE
 ); 
 
 -- Create table User_role, referencing to role table
@@ -231,7 +236,7 @@ public class Crazy extends AdvancedRobot {
 			movingForward = true;
 			// Tell the game we will want to turn right 90
 			setTurnRight(90);
-			// At this point, we have indicated to the game that *when we do something*,
+			// At this point, we have indicated to the game that *when we dao something*,
 			// we will want to move ahead and turn right.  That''s what "set" means.
 			// It is important to realize we have not done anything yet!
 			// In order to actually move, we''ll want to call a method that
@@ -248,7 +253,7 @@ public class Crazy extends AdvancedRobot {
 			setTurnRight(180);
 			// .. and wait for that turn to finish.
 			waitFor(new TurnCompleteCondition(this));
-			// then back to the top to do it all again
+			// then back to the top to dao it all again
 		}
 	}
 
