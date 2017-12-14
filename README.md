@@ -27,6 +27,9 @@
   **GET localhost:8080/access/1**
 
 
+### Run Project
+  Run or debug main class **RobocodeDashboardApplication**
+
   
   
 
