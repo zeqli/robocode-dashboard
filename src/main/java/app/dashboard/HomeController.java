@@ -2,9 +2,6 @@ package app.dashboard;
 
 
 import app.dao.entity.Access;
-<<<<<<< HEAD
-import app.dao.idao.IAccessDAO;
-=======
 import app.dao.entity.GroupRole;
 import app.dao.entity.GroupRoleMap;
 import app.dao.entity.Groups;
@@ -22,8 +19,6 @@ import app.dao.idao.IRoleDAO;
 import app.dao.idao.IUserGroupDAO;
 import app.dao.idao.IUserRoleDAO;
 import app.dao.idao.IUsersDAO;
-
->>>>>>> api commit
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,8 +33,6 @@ public class HomeController {
 
     @Autowired
     private IAccessDAO accessDAO;
-<<<<<<< HEAD
-=======
     
     @Autowired
     private IRoleDAO roleDAO;
@@ -64,7 +57,6 @@ public class HomeController {
     
     @Autowired
     private IGroupRoleMapDAO groupRoleMapDAO;
->>>>>>> api commit
 
     @RequestMapping("/")
     public String home() {
@@ -94,9 +86,6 @@ public class HomeController {
         response = accessDAO.getAllAccess();
         return response;
     }
-<<<<<<< HEAD
-
-=======
     
     @RequestMapping(value ="/role/{id}", method = RequestMethod.GET, produces = "application/json")
     public Role getRoleById(@PathVariable String id) {
@@ -297,6 +286,5 @@ public class HomeController {
     	response = groupRoleMapDAO.getAllGroupRoleMap();
     	return response;
     }
->>>>>>> api commit
     //TODO Add Controller Here
 }
