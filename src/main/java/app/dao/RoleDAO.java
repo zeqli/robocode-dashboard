@@ -1,8 +1,5 @@
 package app.dao;
 
-<<<<<<< HEAD
-public class RoleDAO {
-=======
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,5 +29,4 @@ public class RoleDAO implements IRoleDAO {
 		return repo.findAll();
 	}
 
->>>>>>> api commit
 }
