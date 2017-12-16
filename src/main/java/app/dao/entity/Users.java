@@ -1,24 +1,17 @@
 package app.dao.entity;
-<<<<<<< HEAD
-import javax.persistence.*;
 
-@Entity
-=======
 import java.sql.Date;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
->>>>>>> api commit
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
-<<<<<<< HEAD
-=======
     @Column(name = "userID")
     private String userID;
     
@@ -37,6 +30,4 @@ public class Users {
 		return create_time;
 	}
     
-    
->>>>>>> api commit
 }
