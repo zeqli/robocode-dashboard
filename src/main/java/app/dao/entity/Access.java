@@ -11,10 +11,6 @@ public class Access {
     @Column(name = "id", nullable = false)
     private Long id;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> api commit
     @Column(name = "name")
     private String name;
 
