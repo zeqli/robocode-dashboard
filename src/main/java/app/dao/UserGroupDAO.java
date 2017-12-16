@@ -1,8 +1,5 @@
 package app.dao;
 
-<<<<<<< HEAD
-public class UserGroupDAO {
-=======
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -31,5 +28,4 @@ public class UserGroupDAO implements IUserGroupDAO {
 	public List<UserGroup> getAllUserGroup() {
 		return repo.findAll();
 	}
->>>>>>> api commit
 }
