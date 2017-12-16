@@ -1,16 +1,11 @@
 package app.dao.entity;
-<<<<<<< HEAD
-import javax.persistence.*;
 
-@Entity
-=======
 import java.sql.Date;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Role")
->>>>>>> api commit
 public class Role {
 
     @Id
@@ -18,8 +13,6 @@ public class Role {
     @Column(name = "id", nullable = false)
     private Long id;
 
-<<<<<<< HEAD
-=======
     @Column(name = "name")
     private String name;
     
@@ -45,6 +38,4 @@ public class Role {
 		return update_time;
 	}
     
-    
->>>>>>> api commit
 }
