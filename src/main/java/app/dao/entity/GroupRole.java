@@ -1,16 +1,5 @@
 package app.dao.entity;
-<<<<<<< HEAD
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
-public class GroupRole {
-
-    @Id
-    @Column(name = "group_id", nullable = false)
-    private Long groupId;
-=======
 import java.sql.Date;
 
 import javax.persistence.*;
@@ -51,6 +40,5 @@ public class GroupRole {
 		return create_time;
 	}
     
-    
->>>>>>> api commit
+   
 }
