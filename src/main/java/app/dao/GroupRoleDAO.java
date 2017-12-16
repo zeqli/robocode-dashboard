@@ -1,8 +1,5 @@
 package app.dao;
 
-<<<<<<< HEAD
-public class GroupRoleDAO {
-=======
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -31,7 +28,4 @@ public class GroupRoleDAO implements IGroupRole {
 	public List<GroupRole> getAllGroupRole() {
 		return repo.findAll();
 	}
-	
-	
->>>>>>> api commit
 }
