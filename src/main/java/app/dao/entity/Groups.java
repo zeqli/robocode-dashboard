@@ -1,16 +1,10 @@
 package app.dao.entity;
-<<<<<<< HEAD
-import javax.persistence.*;
-
-@Entity
-=======
 import java.sql.Date;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Groups")
->>>>>>> api commit
 public class Groups {
 
     @Id
@@ -18,8 +12,6 @@ public class Groups {
     @Column(name = "id", nullable = false)
     private Long id;
 
-<<<<<<< HEAD
-=======
     @Column(name = "name")
     private String name;
     
@@ -38,6 +30,4 @@ public class Groups {
 		return create_time;
 	}
     
-    
->>>>>>> api commit
 }
