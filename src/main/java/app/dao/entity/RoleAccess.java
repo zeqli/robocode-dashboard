@@ -1,14 +1,5 @@
 package app.dao.entity;
-<<<<<<< HEAD
-import javax.persistence.*;
 
-@Entity
-public class RoleAccess {
-
-    @Id
-    @Column(name = "role_id", nullable = false)
-    private Long roleId;
-=======
 import java.sql.Date;
 
 import javax.persistence.*;
@@ -48,6 +39,5 @@ public class RoleAccess {
 		return create_time;
 	}
     
-    
->>>>>>> api commit
+   
 }
