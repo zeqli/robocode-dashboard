@@ -1,8 +1,5 @@
 package app.dao;
 
-<<<<<<< HEAD
-public class UsersDAO {
-=======
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,6 +29,5 @@ public class UsersDAO implements IUsersDAO {
 		return repo.findAll();
 	}
 	
-	
->>>>>>> api commit
+
 }
