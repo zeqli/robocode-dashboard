@@ -1,8 +1,5 @@
 package app.dao;
 
-<<<<<<< HEAD
-public class UserRoleDAO {
-=======
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -31,5 +28,4 @@ public class UserRoleDAO implements IUserRoleDAO {
 	public List<UserRole> getAllUserRole() {
 		return repo.findAll();
 	}
->>>>>>> api commit
 }
