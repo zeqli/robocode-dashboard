@@ -29,4 +29,12 @@ public class GroupsDAO implements IGroupsDAO {
 		return repo.findAll();
 	}
 
+	@Override
+	@Transactional
+	public Groups insertGroup(String name) {
+		Groups newGroup = new Groups();
+		newGroup.setName(name);
+		return repo.saveAndFlush(newGroup);
+	}
+
 }

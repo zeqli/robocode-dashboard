@@ -10,4 +10,6 @@ public interface IAccessDAO {
     Access getAccessById(Long id);
 
     List<Access> getAllAccess();
+    
+    Access insertAccess(String name);
 }

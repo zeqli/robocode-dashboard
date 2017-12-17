@@ -43,6 +43,26 @@ public class GroupRoleMap {
 	public Long getTo_group_id() {
 		return to_group_id;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setFrom_role_id(Long from_role_id) {
+		this.from_role_id = from_role_id;
+	}
+
+	public void setFrom_group_id(Long from_group_id) {
+		this.from_group_id = from_group_id;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public void setTo_group_id(Long to_group_id) {
+		this.to_group_id = to_group_id;
+	}
     
     
 }

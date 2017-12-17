@@ -28,6 +28,14 @@ public class UsersDAO implements IUsersDAO {
 	public List<Users> getAllUser() {
 		return repo.findAll();
 	}
+
+	@Override
+	@Transactional
+	public Users insertUser(String ID) {
+		Users newUser = new Users();
+		newUser.setUserID(ID);
+		return repo.saveAndFlush(newUser);
+	}
 	
 
 }

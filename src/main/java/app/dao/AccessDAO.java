@@ -28,5 +28,13 @@ public class AccessDAO implements IAccessDAO {
         return repo.findAll();
     }
 
+	@Override
+	public Access insertAccess(String name) {
+		Access newAccess = new Access();
+		newAccess.setName(name);
+		
+		return repo.saveAndFlush(newAccess);
+	}
+
 
 }

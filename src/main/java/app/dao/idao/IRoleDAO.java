@@ -10,4 +10,5 @@ import app.dao.entity.Role;
 public interface IRoleDAO {
 	Role getRoleById(Long id);
 	List<Role> getAllRole();
+	Role insertRole(String name);
 }

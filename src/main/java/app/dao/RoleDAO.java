@@ -29,4 +29,12 @@ public class RoleDAO implements IRoleDAO {
 		return repo.findAll();
 	}
 
+	@Override
+	@Transactional
+	public Role insertRole(String name) {
+		Role newRole = new Role();
+		newRole.setName(name);
+		return repo.saveAndFlush(newRole);
+	}
+
 }

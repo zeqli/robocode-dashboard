@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -286,5 +287,38 @@ public class HomeController {
     	response = groupRoleMapDAO.getAllGroupRoleMap();
     	return response;
     }
+    
+    @RequestMapping(value = "/access/{name}", method = RequestMethod.POST, produces = "application/json")
+    public Access createAccess(@PathVariable String name){
+        Access response = null;
+        
+        response = accessDAO.insertAccess(name);
+        return response;
+    }
+    
+    @RequestMapping(value = "/group/{name}", method = RequestMethod.POST, produces = "application/json")
+    public Groups createGroup(@PathVariable String name){
+        Groups response = null;
+        
+        response = groupsDAO.insertGroup(name);
+        return response;
+    }
+    
+    @RequestMapping(value = "/role/{name}", method = RequestMethod.POST, produces = "application/json")
+    public Role createRole(@PathVariable String name){
+        Role response = null;
+        
+        response = roleDAO.insertRole(name);
+        return response;
+    }
+    
+    @RequestMapping(value = "/user/{UserID}", method = RequestMethod.POST, produces = "application/json")
+    public Users createUser(@PathVariable String UserID){
+        Users response = null;
+        
+        response = usersDAO.insertUser(UserID);
+        return response;
+    }
+    
     //TODO Add Controller Here
 }
