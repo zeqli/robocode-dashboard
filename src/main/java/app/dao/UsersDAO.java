@@ -31,9 +31,7 @@ public class UsersDAO implements IUsersDAO {
 
 	@Override
 	@Transactional
-	public Users insertUser(String ID) {
-		Users newUser = new Users();
-		newUser.setUserID(ID);
+	public Users insertUser(Users newUser) {
 		return repo.saveAndFlush(newUser);
 	}
 	

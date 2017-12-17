@@ -11,6 +11,6 @@ public interface IGroupsDAO {
 	
 	Groups getGroupById(Long id);
 	List<Groups> getAllGroup();
-	Groups insertGroup(String name);
+	Groups insertGroup(Groups newGroup);
 
 }

@@ -11,5 +11,5 @@ public interface IAccessDAO {
 
     List<Access> getAllAccess();
     
-    Access insertAccess(String name);
+    Access insertAccess(Access newAccess);
 }

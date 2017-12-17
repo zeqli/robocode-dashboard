@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -292,7 +291,9 @@ public class HomeController {
     public Access createAccess(@PathVariable String name){
         Access response = null;
         
-        response = accessDAO.insertAccess(name);
+        Access newAccess = new Access();
+        newAccess.setName(name);
+        response = accessDAO.insertAccess(newAccess);
         return response;
     }
     
@@ -300,7 +301,9 @@ public class HomeController {
     public Groups createGroup(@PathVariable String name){
         Groups response = null;
         
-        response = groupsDAO.insertGroup(name);
+        Groups newGroup = new Groups();
+        newGroup.setName(name);
+        response = groupsDAO.insertGroup(newGroup);
         return response;
     }
     
@@ -308,7 +311,9 @@ public class HomeController {
     public Role createRole(@PathVariable String name){
         Role response = null;
         
-        response = roleDAO.insertRole(name);
+        Role newRole = new Role();
+        newRole.setName(name);
+        response = roleDAO.insertRole(newRole);
         return response;
     }
     
@@ -316,8 +321,98 @@ public class HomeController {
     public Users createUser(@PathVariable String UserID){
         Users response = null;
         
-        response = usersDAO.insertUser(UserID);
+        Users newUser = new Users();
+        newUser.setUserID(UserID);
+        response = usersDAO.insertUser(newUser);
         return response;
+    }
+    
+    @RequestMapping(value = "/update/access/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
+    public Access UpdateAccessById(@PathVariable String id, @PathVariable String name){
+        Long idL = null;
+        Access response = null;
+
+        try {
+            idL = Long.parseLong(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (idL != null) {
+             response = accessDAO.getAccessById(idL);
+        }
+        Access updatedAccess = null;
+        if (response != null) {
+        	response.setName(name);
+        	updatedAccess = accessDAO.insertAccess(response);
+        }
+        return updatedAccess;
+    }
+    
+    @RequestMapping(value = "/update/role/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
+    public Role UpdateRoleById(@PathVariable String id, @PathVariable String name) {
+    	Long idL = null;
+    	Role response = null;
+    	
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		response = roleDAO.getRoleById(idL);
+    	}
+    	Role updatedRole = null;
+    	if (response != null) {
+    		response.setName(name);
+    		updatedRole = roleDAO.insertRole(response);
+    	}
+    	return updatedRole;
+    }
+    
+    @RequestMapping(value = "/update/group/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
+    public Groups UpdateGroupById(@PathVariable String id, @PathVariable String name) {
+    	Long idL = null;
+    	Groups response = null;
+    	
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		response = groupsDAO.getGroupById(idL);
+    	}
+    	Groups updatedGroup = null;
+    	if (response != null) {
+    		response.setName(name);
+    		updatedGroup = groupsDAO.insertGroup(response);
+    	}
+    	return updatedGroup;
+    }
+    
+    @RequestMapping(value = "/update/user/{id}/{UserID}", method = RequestMethod.PUT, produces = "application/json")
+    public Users UpdateUserById(@PathVariable String id, @PathVariable String UserID) {
+    	Long idL = null;
+    	Users response = null;
+    	
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		response = usersDAO.getUserById(idL);
+    	}
+    	Users updatedUser = null;
+    	if (response != null) {
+    		response.setUserID(UserID);
+    		updatedUser = usersDAO.insertUser(response);
+    	}
+    	return updatedUser;
     }
     
     //TODO Add Controller Here

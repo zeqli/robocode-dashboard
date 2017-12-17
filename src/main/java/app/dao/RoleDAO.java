@@ -31,9 +31,7 @@ public class RoleDAO implements IRoleDAO {
 
 	@Override
 	@Transactional
-	public Role insertRole(String name) {
-		Role newRole = new Role();
-		newRole.setName(name);
+	public Role insertRole(Role newRole) {
 		return repo.saveAndFlush(newRole);
 	}
 

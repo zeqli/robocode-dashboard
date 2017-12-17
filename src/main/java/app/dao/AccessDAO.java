@@ -29,9 +29,8 @@ public class AccessDAO implements IAccessDAO {
     }
 
 	@Override
-	public Access insertAccess(String name) {
-		Access newAccess = new Access();
-		newAccess.setName(name);
+	@Transactional
+	public Access insertAccess(Access newAccess) {
 		
 		return repo.saveAndFlush(newAccess);
 	}

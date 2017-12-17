@@ -31,9 +31,7 @@ public class GroupsDAO implements IGroupsDAO {
 
 	@Override
 	@Transactional
-	public Groups insertGroup(String name) {
-		Groups newGroup = new Groups();
-		newGroup.setName(name);
+	public Groups insertGroup(Groups newGroup) {
 		return repo.saveAndFlush(newGroup);
 	}
 

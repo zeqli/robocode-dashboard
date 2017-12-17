@@ -10,5 +10,5 @@ import app.dao.entity.Users;
 public interface IUsersDAO {
 	Users getUserById(Long id);
 	List<Users> getAllUser();
-	Users insertUser(String UserID);
+	Users insertUser(Users newUser);
 }
