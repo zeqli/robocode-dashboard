@@ -562,7 +562,201 @@ public class HomeController {
     	return updatedUser;
     }
     
+    @RequestMapping(value = "/group_role/update/{id}/{group_id}/{role_id}", method = RequestMethod.PUT, produces = "application/json")
+    public GroupRole UpdateGroupRoleById(@PathVariable String id, @PathVariable String group_id, @PathVariable String role_id) {
+    	Long idL = null;
+    	GroupRole groupRole = null;
+    	GroupRole response = null;
+    	Long gID = null, rID = null;
+    	
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		groupRole = groupRoleDAO.getGroupRoleById(idL);
+    	}
+    	
+    	try {
+    		gID = Long.parseLong(group_id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	try {
+    		rID = Long.parseLong(role_id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	groupRole.setGroup_id(gID);
+    	groupRole.setRole(roleDAO.getRoleById(rID));
+    	response = groupRoleDAO.insertGroupRole(groupRole);
+    	
+    	return response;
+    }
     
+    @RequestMapping(value = "/group_role_map/update/{id}/{from_groupID}/{from_roleID}/{to_groupID}/{to_roleID}", method = RequestMethod.PUT, produces = "application/json")
+    public GroupRoleMap UpdateGroupRoleMap(@PathVariable String id, @PathVariable String from_groupID, @PathVariable String from_roleID, @PathVariable String to_groupID, @PathVariable String to_roleID) {
+        GroupRoleMap response = null;
+        
+        GroupRoleMap groupRoleMap = null;
+        Long idL = null, toGID = null, toRID = null, fromGID = null, fromRID = null;
+        
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		groupRoleMap = groupRoleMapDAO.getGroupRoleMapById(idL);
+    	}
+        
+        try {
+        	toGID = Long.parseLong(to_groupID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	fromGID = Long.parseLong(from_groupID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	toRID = Long.parseLong(to_roleID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	fromRID = Long.parseLong(from_roleID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        groupRoleMap.setFrom_group_id(fromGID);
+        groupRoleMap.setTo_group_id(toGID);
+        groupRoleMap.setFrom_role_id(fromRID);
+        groupRoleMap.setRole(roleDAO.getRoleById(toRID));
+        
+        response = groupRoleMapDAO.insertGroupRoleMap(groupRoleMap);
+        
+        return response;
+    }
+    
+    @RequestMapping(value = "/role_access/update/{id}/{role_id}/{access_id}", method = RequestMethod.PUT, produces = "application/json")
+    public RoleAccess UpdateRoleAccess(@PathVariable String id, @PathVariable String role_id, @PathVariable String access_id){
+        RoleAccess response = null;
+        
+        RoleAccess roleAccess = null;
+        
+        Long idL = null, rID = null, aID = null;
+        
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		roleAccess = roleAccessDAO.getRoleAccessById(idL);
+    	}
+        
+        try {
+        	rID = Long.parseLong(role_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	aID = Long.parseLong(access_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        roleAccess.setRole_id(rID);
+        roleAccess.setAccess(accessDAO.getAccessById(aID));
+        response = roleAccessDAO.insertRoleAccess(roleAccess);
+        
+        return response;
+    }
+    
+    @RequestMapping(value = "/user_group/update/{id}/{user_id}/{group_id}", method = RequestMethod.PUT, produces = "application/json")
+    public UserGroup UpdateUserGroup(@PathVariable String id, @PathVariable String user_id, @PathVariable String group_id){
+        UserGroup response = null;
+        
+        UserGroup userGroup = null;
+        Long idL = null, uID = null, gID = null;
+        
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		userGroup = userGroupDAO.getUserGroupById(idL);
+    	}
+        
+        try {
+        	uID = Long.parseLong(user_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	gID = Long.parseLong(group_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+
+        userGroup.setGroup_id(gID);
+        userGroup.setUsr_id(uID);
+        response = userGroupDAO.insertUserGroup(userGroup);
+        
+        return response;
+    }
+    
+    @RequestMapping(value = "/user_role/update/{id}/{user_id}/{role_id}", method = RequestMethod.PUT, produces = "application/json")
+    public UserRole UpdateUserRole(@PathVariable String id, @PathVariable String user_id, @PathVariable String role_id){
+        UserRole response = null;
+        
+        UserRole userRole = new UserRole();
+        Long idL = null, uID = null, rID = null;
+        
+    	try {
+    		idL = Long.parseLong(id);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	if (idL != null) {
+    		userRole = userRoleDAO.getUserRoleById(idL);
+    	}
+    	
+        try {
+        	uID = Long.parseLong(user_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	rID = Long.parseLong(role_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        userRole.setUsr_id(uID);
+        userRole.setRole(roleDAO.getRoleById(rID));
+        response = userRoleDAO.insertUserRole(userRole);
+        
+        return response;
+    }
     
     //TODO Add Controller Here
 }
