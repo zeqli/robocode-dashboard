@@ -10,5 +10,5 @@ import app.dao.entity.RoleAccess;
 public interface IRoleAccessDAO {
 	RoleAccess getRoleAccessById(Long id);
 	List<RoleAccess> getAllRoleAccess();
-
+	RoleAccess insertRoleAccess(RoleAccess roleAccsess);
 }

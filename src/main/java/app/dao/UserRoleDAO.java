@@ -28,4 +28,10 @@ public class UserRoleDAO implements IUserRoleDAO {
 	public List<UserRole> getAllUserRole() {
 		return repo.findAll();
 	}
+
+	@Override
+	@Transactional
+	public UserRole insertUserRole(UserRole userRole) {
+		return repo.saveAndFlush(userRole);
+	}
 }

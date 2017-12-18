@@ -11,5 +11,5 @@ public interface IGroupRoleMapDAO {
 
 	GroupRoleMap getGroupRoleMapById(Long id);
 	List<GroupRoleMap> getAllGroupRoleMap();
-	
+	GroupRoleMap insertGroupRoleMap(GroupRoleMap groupRoleMap);
 }

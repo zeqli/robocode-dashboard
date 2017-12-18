@@ -11,4 +11,5 @@ public interface IUserGroupDAO {
 	
 	UserGroup getUserGroupById(Long id);
 	List<UserGroup> getAllUserGroup();
+	UserGroup insertUserGroup(UserGroup userGroup);
 }

@@ -317,7 +317,7 @@ public class HomeController {
         return response;
     }
     
-    @RequestMapping(value = "/user/{UserID}", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/user/new/{UserID}", method = RequestMethod.POST, produces = "application/json")
     public Users createUser(@PathVariable String UserID){
         Users response = null;
         
@@ -327,7 +327,154 @@ public class HomeController {
         return response;
     }
     
-    @RequestMapping(value = "/update/access/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = "/group_role/new/{groupID}/{roleID}", method = RequestMethod.POST, produces = "application/json")
+    public GroupRole createGroupRole(@PathVariable String groupID, @PathVariable String roleID){
+        GroupRole response = null;
+        
+        GroupRole groupRole = new GroupRole();
+        Long gID = null, rID = null;
+        
+        try {
+        	gID = Long.parseLong(groupID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	rID = Long.parseLong(roleID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        groupRole.setGroup_id(gID);
+        groupRole.setRole(roleDAO.getRoleById(rID));
+        
+        response = groupRoleDAO.insertGroupRole(groupRole);
+        
+        return response;
+    }
+    
+    @RequestMapping(value = "/group_role_map/new/{from_groupID}/{from_roleID}/{to_groupID}/{to_roleID}", method = RequestMethod.POST, produces = "application/json")
+    public GroupRoleMap createGroupRoleMap(@PathVariable String from_groupID, @PathVariable String from_roleID, @PathVariable String to_groupID, @PathVariable String to_roleID) {
+        GroupRoleMap response = null;
+        
+        GroupRoleMap groupRoleMap = new GroupRoleMap();
+        Long toGID = null, toRID = null, fromGID = null, fromRID = null;
+        
+        try {
+        	toGID = Long.parseLong(to_groupID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	fromGID = Long.parseLong(from_groupID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	toRID = Long.parseLong(to_roleID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	fromRID = Long.parseLong(from_roleID);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        groupRoleMap.setFrom_group_id(fromGID);
+        groupRoleMap.setTo_group_id(toGID);
+        groupRoleMap.setFrom_role_id(fromRID);
+        groupRoleMap.setRole(roleDAO.getRoleById(toRID));
+        
+        response = groupRoleMapDAO.insertGroupRoleMap(groupRoleMap);
+        
+        return response;
+    }
+    
+    @RequestMapping(value = "/role_access/new/{role_id}/{access_id}", method = RequestMethod.POST, produces = "application/json")
+    public RoleAccess createRoleAccess(@PathVariable String role_id, @PathVariable String access_id){
+        RoleAccess response = null;
+        
+        RoleAccess roleAccess = new RoleAccess();
+        Long rID = null, aID = null;
+        
+        try {
+        	rID = Long.parseLong(role_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	aID = Long.parseLong(access_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        roleAccess.setRole_id(rID);
+        roleAccess.setAccess(accessDAO.getAccessById(aID));
+        response = roleAccessDAO.insertRoleAccess(roleAccess);
+        
+        return response;
+    }
+    
+    @RequestMapping(value = "/user_group/new/{user_id}/{group_id}", method = RequestMethod.POST, produces = "application/json")
+    public UserGroup createUserGroup(@PathVariable String user_id, @PathVariable String group_id){
+        UserGroup response = null;
+        
+        UserGroup userGroup = new UserGroup();
+        Long uID = null, gID = null;
+        
+        try {
+        	uID = Long.parseLong(user_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	gID = Long.parseLong(group_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+
+        userGroup.setGroup_id(gID);
+        userGroup.setUsr_id(uID);
+        response = userGroupDAO.insertUserGroup(userGroup);
+        
+        return response;
+    }
+    
+    @RequestMapping(value = "/user_role/new/{user_id}/{role_id}", method = RequestMethod.POST, produces = "application/json")
+    public UserRole createUserRole(@PathVariable String user_id, @PathVariable String role_id){
+        UserRole response = null;
+        
+        UserRole userRole = new UserRole();
+        Long uID = null, rID = null;
+        
+        try {
+        	uID = Long.parseLong(user_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        try {
+        	rID = Long.parseLong(role_id);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        
+        userRole.setUsr_id(uID);
+        userRole.setRole(roleDAO.getRoleById(rID));
+        response = userRoleDAO.insertUserRole(userRole);
+        
+        return response;
+    }
+    
+    
+    @RequestMapping(value = "/access/update/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
     public Access UpdateAccessById(@PathVariable String id, @PathVariable String name){
         Long idL = null;
         Access response = null;
@@ -349,7 +496,7 @@ public class HomeController {
         return updatedAccess;
     }
     
-    @RequestMapping(value = "/update/role/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = "/role/update/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
     public Role UpdateRoleById(@PathVariable String id, @PathVariable String name) {
     	Long idL = null;
     	Role response = null;
@@ -371,7 +518,7 @@ public class HomeController {
     	return updatedRole;
     }
     
-    @RequestMapping(value = "/update/group/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = "/group/update/{id}/{name}", method = RequestMethod.PUT, produces = "application/json")
     public Groups UpdateGroupById(@PathVariable String id, @PathVariable String name) {
     	Long idL = null;
     	Groups response = null;
@@ -393,7 +540,7 @@ public class HomeController {
     	return updatedGroup;
     }
     
-    @RequestMapping(value = "/update/user/{id}/{UserID}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = "/user/update/{id}/{UserID}", method = RequestMethod.PUT, produces = "application/json")
     public Users UpdateUserById(@PathVariable String id, @PathVariable String UserID) {
     	Long idL = null;
     	Users response = null;
@@ -414,6 +561,8 @@ public class HomeController {
     	}
     	return updatedUser;
     }
+    
+    
     
     //TODO Add Controller Here
 }

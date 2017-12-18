@@ -28,4 +28,10 @@ public class UserGroupDAO implements IUserGroupDAO {
 	public List<UserGroup> getAllUserGroup() {
 		return repo.findAll();
 	}
+
+	@Override
+	@Transactional
+	public UserGroup insertUserGroup(UserGroup userGroup) {
+		return repo.saveAndFlush(userGroup);
+	}
 }

@@ -10,5 +10,5 @@ import app.dao.entity.GroupRole;
 public interface IGroupRole {
 	GroupRole getGroupRoleById(Long id);
 	List<GroupRole> getAllGroupRole();
-
+	GroupRole insertGroupRole(GroupRole groupRole);
 }

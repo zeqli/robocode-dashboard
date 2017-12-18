@@ -28,6 +28,12 @@ public class GroupRoleMapDAO implements IGroupRoleMapDAO {
 	public List<GroupRoleMap> getAllGroupRoleMap() {
 		return repo.findAll();
 	}
+
+	@Override
+	@Transactional
+	public GroupRoleMap insertGroupRoleMap(GroupRoleMap groupRoleMap) {
+		return repo.saveAndFlush(groupRoleMap);
+	}
 	
 	
 }

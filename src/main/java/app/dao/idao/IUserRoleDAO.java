@@ -11,4 +11,5 @@ import app.dao.entity.UserRole;
 public interface IUserRoleDAO {
 	UserRole getUserRoleById(Long id);
 	List<UserRole> getAllUserRole();
+	UserRole insertUserRole(UserRole userRole);
 }

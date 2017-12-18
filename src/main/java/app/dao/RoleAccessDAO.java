@@ -28,5 +28,13 @@ public class RoleAccessDAO implements IRoleAccessDAO {
 	public List<RoleAccess> getAllRoleAccess() {
 		return repo.findAll();
 	}
+
+	@Override
+	@Transactional
+	public RoleAccess insertRoleAccess(RoleAccess roleAccess) {
+		return repo.saveAndFlush(roleAccess);
+	}
+	
+	
 	
 }

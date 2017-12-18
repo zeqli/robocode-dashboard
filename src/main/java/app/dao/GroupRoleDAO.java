@@ -28,4 +28,10 @@ public class GroupRoleDAO implements IGroupRole {
 	public List<GroupRole> getAllGroupRole() {
 		return repo.findAll();
 	}
+
+	@Override
+	@Transactional
+	public GroupRole insertGroupRole(GroupRole groupRole) {
+		return repo.saveAndFlush(groupRole);
+	}
 }
